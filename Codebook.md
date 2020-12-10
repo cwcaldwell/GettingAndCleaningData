@@ -1,12 +1,12 @@
 ---
-title: "Cookbook"
+title: "Codebook"
 author: "Chuck Caldwell"
 date: "12/10/2020"
 output: html_document
 ---
 
 # GettingAndCleaningData
-## Coursera JHU Getting and Cleaning Data Course Project Cookbook
+## Coursera JHU Getting and Cleaning Data Course Project Codebook
 
 The purpose of this project is to collect and prepare data that can be used for
 later analysis. The "raw" data for this project represents data collected from
