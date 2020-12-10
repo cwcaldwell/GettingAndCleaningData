@@ -27,19 +27,18 @@ data <- rbind(test, train) %>%
     mutate(subject = as.factor(subject))
 
 # determine the columns to keep (means and standard deviations)
-keep <- grepl("subject|activity|mean[^F]()|std()", names(data))
+keep <- grepl("subject|activity|mean[^F]|std", names(data))
 # and subset the data accordingly
 data <- data[, keep]
 
 # apply descriptive names (levels) to activity factor
 levels(data$activity) <- tolower(actLabels$action)
 
-# clean-up variable names (remove parentheses and hyphens)
+# clean-up variable names (remove periods and preserve camel case)
 names(data) <- names(data) %>%
-    sub("-mean()-", "Mean", ., fixed = TRUE) %>%
-    sub("-mean()", "Mean", ., fixed = TRUE) %>%
-    sub("-std()-", "Std", ., fixed = TRUE) %>%
-    sub("-std()", "Std", ., fixed = TRUE)
+    sub("mean", "Mean", .) %>%
+    sub("std", "Std", .) %>%
+    gsub("\\.", "", .)
 
 # clean up environment
 rm(list = c("varLabels", "actLabels", "meas", "subj", "act", 
